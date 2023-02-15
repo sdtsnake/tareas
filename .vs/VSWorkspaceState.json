@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Models"
   ],
+  "SelectedNode": "\\TareaContext.cs",
   "PreviewInSolutionExplorer": false
 }
