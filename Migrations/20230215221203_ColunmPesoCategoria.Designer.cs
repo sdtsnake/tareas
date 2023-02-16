@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using proyectef;
 
@@ -11,9 +12,10 @@ using proyectef;
 namespace proyectef.Migrations
 {
     [DbContext(typeof(TareasContext))]
-    partial class TareasContextModelSnapshot : ModelSnapshot
+    [Migration("20230215221203_ColunmPesoCategoria")]
+    partial class ColunmPesoCategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +31,7 @@ namespace proyectef.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
@@ -42,20 +45,6 @@ namespace proyectef.Migrations
                     b.HasKey("CategoriaId");
 
                     b.ToTable("Categoria", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            CategoriaId = new Guid("5be4dbfe-1be0-4e7e-9648-51e585602c40"),
-                            Nombre = "Actividades pendientes",
-                            Peso = 20
-                        },
-                        new
-                        {
-                            CategoriaId = new Guid("5be4dbfe-1be0-4e7e-9648-51e585602c20"),
-                            Nombre = "Actividades personales",
-                            Peso = 50
-                        });
                 });
 
             modelBuilder.Entity("proyectef.Models.Tarea", b =>
@@ -68,6 +57,7 @@ namespace proyectef.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaCreacion")
@@ -86,24 +76,6 @@ namespace proyectef.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Tarea", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            TareaId = new Guid("5be4dbfe-1be0-4e7e-9648-51e585602c45"),
-                            CategoriaId = new Guid("5be4dbfe-1be0-4e7e-9648-51e585602c40"),
-                            FechaCreacion = new DateTime(2023, 2, 15, 19, 12, 55, 157, DateTimeKind.Local).AddTicks(2558),
-                            PrioridadTarea = 1,
-                            Titulo = "Pagos de servicios publicos"
-                        },
-                        new
-                        {
-                            TareaId = new Guid("5be4dbfe-1be0-4e7e-9648-51e585602c25"),
-                            CategoriaId = new Guid("5be4dbfe-1be0-4e7e-9648-51e585602c20"),
-                            FechaCreacion = new DateTime(2023, 2, 15, 19, 12, 55, 157, DateTimeKind.Local).AddTicks(2574),
-                            PrioridadTarea = 0,
-                            Titulo = "Terminar capitulo de the last of us en hbo"
-                        });
                 });
 
             modelBuilder.Entity("proyectef.Models.Tarea", b =>
