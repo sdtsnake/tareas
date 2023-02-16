@@ -12,6 +12,7 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
+
 app.MapGet("/dbconexion", async([FromServices] TareasContext dbContext) =>
 {
     dbContext.Database.EnsureCreated();
@@ -20,7 +21,7 @@ app.MapGet("/dbconexion", async([FromServices] TareasContext dbContext) =>
 
 app.MapGet("/api/tareas", async ([FromServices] TareasContext dbContext)=>
 {
-    return Results.Ok(dbContext.Tareas.Include(t=> t.Categoria));
+    return Results.Ok(dbContext.Tareas.Include(t=> t.Categoria) );
         
 });
 
