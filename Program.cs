@@ -17,4 +17,11 @@ app.MapGet("/dbconexion", async([FromServices] TareasContext dbContext) =>
     return Results.Ok("Base de datos en memoria: " + dbContext.Database.IsInMemory());
 });
 
+app.MapGet("/api/tareas", async ([FromServices] TareasContext dbContext)=>
+{
+    return Results.Ok(dbContext.Tareas
+        .Include(t=> t.Categoria)
+        .Where(t=> t.PrioridadTarea == proyectef.Models.Prioridad.Baja));
+});
+
 app.Run();
